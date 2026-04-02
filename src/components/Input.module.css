@@ -1,0 +1,94 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  width: 100%;
+  text-align: left;
+}
+
+.label {
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-body-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+}
+
+.prefix {
+  display: flex;
+  align-items: center;
+  padding: 0 var(--space-12);
+  background: var(--color-background-subtle);
+  border: 1.5px solid var(--color-border-default);
+  border-right: none;
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+  font-size: var(--font-size-body);
+  font-family: var(--font-family);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.input.hasPrefix {
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  flex: 1;
+}
+
+.input {
+  width: 100%;
+  padding: var(--space-12) var(--space-16);
+  border: 1.5px solid var(--color-border-default);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-body);
+  font-family: var(--font-family);
+  line-height: var(--line-height-body);
+  color: var(--color-text-primary);
+  background: var(--color-surface-default);
+  outline: none;
+  transition: border-color 0.15s ease;
+  box-sizing: border-box;
+}
+
+.input:focus {
+  border-color: var(--color-border-focus);
+}
+
+.input.error {
+  border-color: var(--color-border-error);
+}
+
+.input.disabled {
+  color: var(--color-text-muted);
+  background: var(--color-background-subtle);
+  border-color: var(--color-border-default);
+}
+
+/* Extra right padding when the password toggle is present */
+.input.hasToggle {
+  padding-right: 44px;
+}
+
+.toggleButton {
+  position: absolute;
+  right: var(--space-12);
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-icon-default);
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.errorMessage {
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-body-sm);
+  color: var(--color-text-error);
+}

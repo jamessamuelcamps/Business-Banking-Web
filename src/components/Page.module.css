@@ -1,0 +1,17 @@
+.outer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 var(--space-32);
+  padding-top: 20vh;
+  padding-bottom: 20vh;
+}
+
+.inner {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  /* gap is set via inline style because it is a runtime-dynamic prop */
+}

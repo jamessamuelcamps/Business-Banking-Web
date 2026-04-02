@@ -1,0 +1,113 @@
+.headingBlock {
+  text-align: center;
+}
+
+.heading {
+  font-family: var(--font-family);
+  font-size: var(--font-size-heading-lg);
+  line-height: var(--line-height-heading-lg);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-heading-lg);
+  color: var(--color-text-primary);
+}
+
+.card {
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.cardRow {
+  padding: var(--space-16);
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  text-align: left;
+}
+
+.rowDivider {
+  border-bottom: 1px solid var(--color-border-default);
+}
+
+.iconCircle {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-icon-default);
+}
+
+.rowContent {
+  flex: 1;
+}
+
+.rowTitle {
+  font-family: var(--font-family);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.rowDescription {
+  font-family: var(--font-family);
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-body-sm);
+  color: var(--color-text-secondary);
+}
+
+.supportingText {
+  font-family: var(--font-family);
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-body-sm);
+  color: var(--color-text-secondary);
+  text-align: left;
+}
+
+.checkboxList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-12);
+  cursor: pointer;
+  text-align: left;
+}
+
+.checkboxBox {
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-xs);
+  flex-shrink: 0;
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+  cursor: pointer;
+}
+
+.checkboxBox.unchecked {
+  border: 1.5px solid var(--color-border-default);
+  background: var(--color-surface-default);
+}
+
+.checkboxBox.checked {
+  border: 1.5px solid var(--color-text-primary);
+  background: var(--color-text-primary);
+}
+
+.checkboxText {
+  font-family: var(--font-family);
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-body-sm);
+  color: var(--color-text-primary);
+}

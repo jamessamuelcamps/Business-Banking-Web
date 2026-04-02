@@ -1,0 +1,53 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-24);
+}
+
+.cells {
+  display: flex;
+  gap: var(--space-12);
+}
+
+.cell {
+  width: 48px;
+  height: 56px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--color-border-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-surface-default);
+  transition: border-color 0.15s;
+}
+
+.cell.filled {
+  border-color: var(--color-text-primary);
+}
+
+.cell.cursor {
+  border-color: var(--color-border-focus);
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-text-primary);
+}
+
+.digit {
+  font-family: var(--font-family);
+  font-size: var(--font-size-heading-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.hiddenInput {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}

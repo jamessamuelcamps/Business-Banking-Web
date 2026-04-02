@@ -1,0 +1,46 @@
+.alert {
+  padding: var(--space-12) var(--space-16);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-family);
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-body-sm);
+  color: var(--color-text-primary);
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+/* Variant backgrounds and borders */
+.info {
+  background: var(--color-surface-info);
+}
+
+.success {
+  background: var(--color-surface-success);
+}
+
+.warning {
+  background: var(--color-surface-warning);
+}
+
+.error {
+  background: var(--color-surface-error);
+}
+
+.announcement {
+  background: var(--color-surface-brand-subtle);
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: inherit;
+}
+
+.message {
+  margin: 0;
+  flex: 1;
+  color: var(--color-text-primary);
+}

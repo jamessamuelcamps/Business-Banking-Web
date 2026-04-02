@@ -1,0 +1,130 @@
+/* Header card */
+.headerCard {
+  background-color: var(--color-surface-midnight);
+  border-radius: var(--radius-md);
+  padding: 24px 20px 28px;
+  color: white;
+  text-align: left;
+}
+
+/* Company name label */
+.companyName {
+  margin: 0 0 16px;
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-surface-brand-subtle);
+}
+
+/* Percentage display */
+.percentageWrapper {
+  margin-bottom: 14px;
+}
+
+.percentageLarge {
+  font-size: 64px;
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+.percentageSymbol {
+  font-size: 24px;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: -0.5px;
+}
+
+/* Progress bar */
+.progressBar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.segment {
+  flex: 1;
+  height: 8px;
+  border-radius: var(--radius-full);
+}
+
+.segmentFilled {
+  background-color: var(--color-surface-brand);
+  border: none;
+}
+
+.segmentEmpty {
+  background-color: transparent;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+}
+
+/* Header subtitle */
+.headerSubtitle {
+  margin: 0;
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-body-sm);
+  font-weight: var(--font-weight-semibold);
+  color: white;
+}
+
+/* Section card (shared by main sections and shareholders) */
+.sectionCard {
+  background-color: var(--color-surface-default);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-default);
+  overflow: hidden;
+}
+
+/* Section row button */
+.sectionRow {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-bottom: 1px solid var(--color-border-default);
+  text-align: left;
+  font-family: var(--font-family);
+}
+
+.sectionRowLast {
+  border-bottom: none;
+}
+
+/* Shareholders row (non-button) */
+.shareholdersRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  text-align: left;
+}
+
+/* Row text */
+.rowTitle {
+  margin: 0;
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  line-height: 22px;
+}
+
+.rowSubtitle {
+  margin: 0;
+  margin-top: 2px;
+  font-size: var(--font-size-body-sm);
+  line-height: 20px;
+}
+
+.rowSubtitleSecondary {
+  color: var(--color-text-secondary);
+}
+
+/* Row icon */
+.rowIcon {
+  flex-shrink: 0;
+  margin-left: 8px;
+}

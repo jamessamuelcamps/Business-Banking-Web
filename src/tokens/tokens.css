@@ -1,0 +1,102 @@
+:root {
+  /* Background */
+  --color-background-page: #FFFFFF;
+  --color-background-subtle: #F3F4F6;
+
+  /* Surface */
+  --color-surface-default: #FFFFFF;
+  --color-surface-brand: #5BFF9A;
+  --color-surface-brand-subtle: #C4FFD5;
+  --color-surface-success: #E3F8EB;
+  --color-surface-info: #E8F1FE;
+  --color-surface-error: #FBE7E7;
+  --color-surface-warning: #FEF2E6;
+  --color-surface-teal: #36A6AC;
+  --color-surface-midnight: #0C3637;
+
+  /* Text */
+  --color-text-primary: #1A1A33;
+  --color-text-on-brand: #FFFFFF;
+  --color-text-link: #00703E;
+  --color-text-positive: #00A363;
+  --color-text-info: #3280F6;
+  --color-text-error: #DC2626;
+  --color-text-placeholder: #AEAEAE;
+  --color-text-secondary: #8A8A8A;
+  --color-text-muted: #AEAEAE;
+
+  /* Icon */
+  --color-icon-default: #1A1A33;
+  --color-icon-on-brand: #FFFFFF;
+  --color-icon-on-dark: #000000;
+  --color-icon-link: #00703E;
+  --color-icon-positive: #00A363;
+  --color-icon-info: #3280F6;
+  --color-icon-error: #DC2626;
+
+  /* Border */
+  --color-border-default: #DEDFDF;
+  --color-border-focus: #8A8A8A;
+  --color-border-link: #00703E;
+  --color-border-info: #3280F6;
+  --color-border-error: #DC2626;
+  --color-border-warning: #F7871D;
+
+  /* Spacing */
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-32: 32px;
+
+  /* Border Radius */
+  --radius-xs: 2px;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 20px;
+  --radius-xl: 40px;
+  --radius-pill: 50px;
+  --radius-full: 100px;
+
+  /* Typography */
+  --font-family: 'Manrope', sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --font-size-display: 40px;
+  --line-height-display: 44px;
+  --letter-spacing-display: -0.3px;
+
+  --font-size-heading-lg: 28px;
+  --line-height-heading-lg: 36px;
+  --letter-spacing-heading-lg: -0.25px;
+
+  --font-size-heading-md: 24px;
+  --line-height-heading-md: 30px;
+  --letter-spacing-heading-md: -0.2px;
+
+  --font-size-heading-sm: 20px;
+  --line-height-heading-sm: 26px;
+  --letter-spacing-heading-sm: -0.2px;
+
+  --font-size-heading-xs: 16px;
+  --line-height-heading-xs: 22px;
+  --letter-spacing-heading-xs: 0px;
+
+  --font-size-body: 16px;
+  --line-height-body: 24px;
+
+  --font-size-body-sm: 14px;
+  --line-height-body-sm: 20px;
+
+  /* Icon sizes */
+  --size-icon-xs: 12px;
+  --size-icon-sm: 16px;
+  --size-icon-md: 20px;
+  --size-icon-default: 24px;
+}

@@ -1,0 +1,51 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px var(--space-24);
+  border-radius: var(--radius-xl);
+  border: none;
+  box-sizing: border-box;
+  font-size: var(--font-size-body);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-body);
+  cursor: pointer;
+  transition: opacity 0.15s ease, background 0.15s ease;
+  opacity: 1;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+/* Variants */
+.primary {
+  background: var(--color-text-primary);
+  color: var(--color-surface-default);
+}
+
+.secondary {
+  background: var(--color-surface-brand);
+  color: var(--color-text-primary);
+}
+
+.outline {
+  background: var(--color-background-subtle);
+  color: var(--color-text-primary);
+}
+
+.destructive {
+  background: var(--color-text-error);
+  color: var(--color-surface-default);
+}
+
+/* States */
+.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.loading {
+  cursor: not-allowed;
+}
