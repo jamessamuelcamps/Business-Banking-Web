@@ -11,6 +11,14 @@ html, body, #root {
   height: 100%;
 }
 
+html {
+  scrollbar-width: none; /* Firefox */
+}
+
+html::-webkit-scrollbar {
+  display: none; /* Chrome / Safari */
+}
+
 body {
   font-family: var(--font-family);
   font-size: var(--font-size-body);
