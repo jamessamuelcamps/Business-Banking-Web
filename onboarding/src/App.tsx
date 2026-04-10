@@ -18,6 +18,15 @@ import { SpvConfirm } from './screens/business/SpvConfirm';
 import { CompanyInfo } from './screens/business/CompanyInfo';
 import { AccountPurpose } from './screens/business/AccountPurpose';
 import { SourceOfFunds } from './screens/business/SourceOfFunds';
+import { InternationalPayments } from './screens/business/InternationalPayments';
+import { CountrySelect } from './screens/business/CountrySelect';
+import { EmployeeCount } from './screens/business/EmployeeCount';
+import { ActiveNFE } from './screens/business/ActiveNFE';
+import { PassiveNFE } from './screens/business/PassiveNFE';
+import { FinancialInstitution } from './screens/business/FinancialInstitution';
+import { AnnualTurnover } from './screens/business/AnnualTurnover';
+import { ExpectedInflow } from './screens/business/ExpectedInflow';
+import { InitialDeposit } from './screens/business/InitialDeposit';
 
 function EmailOtp() {
   const { verify } = useJourney();
@@ -51,6 +60,15 @@ function AppRoutes() {
       <Route path="/business/company-info" element={<CompanyInfo />} />
       <Route path="/business/account-purpose" element={<AccountPurpose />} />
       <Route path="/business/source-of-funds" element={<SourceOfFunds />} />
+      <Route path="/business/international-payments" element={<InternationalPayments />} />
+      <Route path="/business/country-select" element={<CountrySelect />} />
+      <Route path="/business/employee-count" element={<EmployeeCount />} />
+      <Route path="/business/active-nfe" element={<ActiveNFE />} />
+      <Route path="/business/passive-nfe" element={<PassiveNFE />} />
+      <Route path="/business/financial-institution" element={<FinancialInstitution />} />
+      <Route path="/business/annual-turnover" element={<AnnualTurnover />} />
+      <Route path="/business/expected-inflow" element={<ExpectedInflow />} />
+      <Route path="/business/initial-deposit" element={<InitialDeposit />} />
     </Routes>
   );
 }

@@ -1,11 +1,20 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Check } from 'lucide-react';
+import { useJourney, type SectionKey } from '../context/JourneyContext';
 import styles from './SectionComplete.module.css';
 
 export function SectionComplete() {
   const [leaving, setLeaving] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  const { setSectionStatus } = useJourney();
+  const section = location.state?.section as SectionKey | undefined;
+
+  useEffect(() => {
+    if (section) setSectionStatus(section, 'complete');
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     const t1 = setTimeout(() => setLeaving(true), 2600);

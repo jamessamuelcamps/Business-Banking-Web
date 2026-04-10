@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Page } from '../../components/Page';
 import { BooleanField } from '../../components/BooleanField';
 import { Button } from '../../components/Button';
@@ -18,8 +18,9 @@ const OPTIONS = [
 
 export function SourceOfFunds() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const internationalPayments = location.state?.internationalPayments as boolean ?? false;
   const [selected, setSelected] = useState<Set<string>>(new Set());
-  const [leaving, setLeaving] = useState(false);
 
   const toggle = (id: string) =>
     setSelected(prev => {
@@ -29,12 +30,14 @@ export function SourceOfFunds() {
     });
 
   const handleNext = () => {
-    setLeaving(true);
-    setTimeout(() => navigate('/section-complete'), 350);
+    const next = internationalPayments
+      ? '/business/international-payments'
+      : '/business/annual-turnover';
+    navigate(next);
   };
 
   return (
-    <Page leaving={leaving}>
+    <Page>
       <div className={styles.headingBlock}>
         <h1 className={styles.heading}>How are you funding the account?</h1>
         <p className={styles.subheading}>We're required to ask where the funds are from. It's standard practice to help prevent financial crime.</p>

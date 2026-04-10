@@ -7,7 +7,7 @@ import styles from './Hub.module.css';
 
 const MAIN_SECTIONS = [
   { key: 'verify' as const, title: 'Verify your details', path: '#' },
-  { key: 'business' as const, title: 'Business information', path: '/business/tax-residency' },
+  { key: 'business' as const, title: 'Business information', path: '/business/account-purpose' },
   { key: 'personal' as const, title: 'Personal information', path: '#' },
   { key: 'id_verification' as const, title: 'ID verification', path: '#' },
 ];

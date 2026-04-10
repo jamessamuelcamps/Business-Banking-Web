@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import { Info } from 'lucide-react';
 import { Page } from '../../components/Page';
 import { BooleanField } from '../../components/BooleanField';
@@ -10,13 +11,16 @@ import styles from './TaxResidency.module.css';
 export function TaxResidency() {
   const navigate = useNavigate();
   const [answer, setAnswer] = useState<'yes' | 'no' | null>(null);
+  const [leaving, setLeaving] = useState(false);
 
   const handleNext = () => {
-    navigate('/business/spv-confirm');
+    if (!answer) return;
+    setLeaving(true);
+    setTimeout(() => navigate('/section-complete', { state: { section: 'business' } }), 350);
   };
 
   return (
-    <Page>
+    <Page leaving={leaving}>
       <div className={styles.headingBlock}>
         <h1 className={styles.heading}>Tax residency</h1>
         <p className={styles.subheading}>Does your business have tax residency <strong>outside</strong> the UK?</p>
