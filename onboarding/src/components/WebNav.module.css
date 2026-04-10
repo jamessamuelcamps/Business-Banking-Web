@@ -1,0 +1,114 @@
+.nav {
+  width: 264px;
+  flex-shrink: 0;
+  height: 100%;
+  background: var(--color-surface-default);
+  border-right: 1px solid var(--color-border-default);
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  padding: var(--space-16);
+}
+
+.logo {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+.companySelector {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-8);
+  background: var(--color-surface-default);
+  border: 1.5px solid var(--color-border-default);
+  border-radius: var(--radius-sm);
+  padding: 0 var(--space-12);
+  height: 36px;
+  cursor: pointer;
+  min-width: 0;
+}
+
+.companyName {
+  font-family: var(--font-family);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.divider {
+  height: 1px;
+  background: var(--color-border-default);
+}
+
+.navItems {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-16) var(--space-12);
+  gap: var(--space-2);
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  padding: var(--space-10) var(--space-12);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.navItemActive {
+  background: var(--color-background-subtle);
+}
+
+.navItemLocked {
+  cursor: default;
+  pointer-events: none;
+}
+
+.navItemLocked .navIcon {
+  color: var(--color-text-muted);
+}
+
+.navItemLocked .navLabel {
+  color: var(--color-text-muted);
+}
+
+.navIcon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--color-icon-default);
+}
+
+.navLabel {
+  flex: 1;
+  font-family: var(--font-family);
+  font-size: var(--font-size-body);
+  color: var(--color-text-primary);
+}
+
+.badge {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-full);
+  background: var(--color-surface-brand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-family);
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}

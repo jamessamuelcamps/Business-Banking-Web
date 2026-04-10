@@ -1,3 +1,75 @@
+/* App shell layout */
+.appLayout {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+
+.mainContent {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.topBar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: flex-end;
+  padding: var(--space-16) var(--space-32);
+  background: var(--color-background-page);
+}
+
+.helpButton {
+  background: var(--color-background-subtle);
+  border: none;
+  border-radius: var(--radius-xl);
+  padding: var(--space-16);
+  font-family: var(--font-family);
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  line-height: 1;
+}
+
+.scrollInner {
+  flex: 1;
+  padding: 20vh var(--space-32);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contentInner {
+  width: 100%;
+  max-width: 860px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  gap: var(--space-12);
+}
+
+@media (max-width: 860px) {
+  .contentInner {
+    grid-template-columns: 1fr;
+  }
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  align-self: start;
+}
+
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
 /* Header card */
 .headerCard {
   background-color: var(--color-surface-midnight);
@@ -5,11 +77,14 @@
   padding: 24px 20px 28px;
   color: white;
   text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-32);
 }
 
 /* Company name label */
 .companyName {
-  margin: 0 0 16px;
+  margin: 0;
   font-size: var(--font-size-body-sm);
   font-weight: var(--font-weight-semibold);
   letter-spacing: 0.05em;
@@ -17,9 +92,16 @@
   color: var(--color-surface-brand-subtle);
 }
 
+/* Middle group — percentage + progress bar */
+.cardMiddle {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
 /* Percentage display */
 .percentageWrapper {
-  margin-bottom: 14px;
+  margin: 0;
 }
 
 .percentageLarge {
@@ -39,7 +121,6 @@
 .progressBar {
   display: flex;
   gap: 8px;
-  margin-bottom: 24px;
 }
 
 .segment {
