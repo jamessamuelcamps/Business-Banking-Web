@@ -9,12 +9,27 @@
   }
 }
 
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+
 .layout {
   height: 100%;
   background-color: var(--color-background-page);
   display: flex;
   flex-direction: column;
   animation: fadeIn 0.2s ease-out;
+}
+
+.leaving {
+  animation: fadeOut 0.3s ease-in forwards;
 }
 
 /* FormPage — outer container */

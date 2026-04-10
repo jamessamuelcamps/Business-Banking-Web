@@ -8,9 +8,10 @@ interface PageProps {
   onBack?: () => void;
   onSubmit?: () => void;
   gap?: string;
+  leaving?: boolean;
 }
 
-export function Page({ children, showBack = true, onBack, onSubmit, gap = 'var(--space-32)' }: PageProps) {
+export function Page({ children, showBack = true, onBack, onSubmit, gap = 'var(--space-32)', leaving }: PageProps) {
   const inner = (
     <div className={styles.inner} style={{ gap }}>
       {children}
@@ -18,7 +19,7 @@ export function Page({ children, showBack = true, onBack, onSubmit, gap = 'var(-
   );
 
   return (
-    <ScreenLayout>
+    <ScreenLayout leaving={leaving}>
       <VerifyHeader showBack={showBack} onBack={onBack} />
       {onSubmit ? (
         <form onSubmit={e => { e.preventDefault(); onSubmit(); }} className={styles.outer}>

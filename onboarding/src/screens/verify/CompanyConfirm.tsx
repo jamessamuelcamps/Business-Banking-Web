@@ -1,4 +1,5 @@
 
+import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Building2, MapPin, Hash, CreditCard } from 'lucide-react';
 import { Page } from '../../components/Page';
@@ -19,6 +20,7 @@ export function CompanyConfirm() {
   const location = useLocation();
   const { setVerifyData } = useJourney();
   const company = location.state?.company as Company | undefined;
+  const [leaving, setLeaving] = useState(false);
 
   if (!company) {
     navigate('/verify/company-search');
@@ -27,11 +29,12 @@ export function CompanyConfirm() {
 
   const handleConfirm = () => {
     setVerifyData({ companyNumber: company.number, companyName: company.name });
-    navigate('/hub');
+    setLeaving(true);
+    setTimeout(() => navigate('/section-complete'), 350);
   };
 
   return (
-    <Page onSubmit={handleConfirm}>
+    <Page onSubmit={handleConfirm} leaving={leaving}>
         <div className={styles.headingBlock}>
           <h1 className={styles.heading}>
             Is this your company?

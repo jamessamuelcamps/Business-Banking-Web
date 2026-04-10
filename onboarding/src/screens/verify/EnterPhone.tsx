@@ -39,7 +39,8 @@ export function EnterPhone() {
           type="tel"
           value={phone}
           onChange={v => { setPhone(v); setError(''); }}
-          placeholder="+44 7700 900000"
+          placeholder="7700 900000"
+          prefix="+44"
           state={error ? 'error' : phone ? 'filled' : 'default'}
           errorMessage={error}
           autoFocus

@@ -19,6 +19,7 @@ const OPTIONS = [
 export function SourceOfFunds() {
   const navigate = useNavigate();
   const [selected, setSelected] = useState<Set<string>>(new Set());
+  const [leaving, setLeaving] = useState(false);
 
   const toggle = (id: string) =>
     setSelected(prev => {
@@ -27,8 +28,13 @@ export function SourceOfFunds() {
       return next;
     });
 
+  const handleNext = () => {
+    setLeaving(true);
+    setTimeout(() => navigate('/section-complete'), 350);
+  };
+
   return (
-    <Page>
+    <Page leaving={leaving}>
       <div className={styles.headingBlock}>
         <h1 className={styles.heading}>How are you funding the account?</h1>
         <p className={styles.subheading}>We're required to ask where the funds are from. It's standard practice to help prevent financial crime.</p>
@@ -52,7 +58,7 @@ export function SourceOfFunds() {
         variant="secondary"
         fullWidth
         disabled={selected.size === 0}
-        onClick={() => navigate('/business/details')}
+        onClick={handleNext}
       />
     </Page>
   );

@@ -12,6 +12,7 @@ import { CompanyConfirm } from './screens/verify/CompanyConfirm';
 import { CreatePasscode } from './screens/verify/CreatePasscode';
 import { ConfirmPasscode } from './screens/verify/ConfirmPasscode';
 import { Hub } from './screens/Hub';
+import { SectionComplete } from './screens/SectionComplete';
 import { TaxResidency } from './screens/business/TaxResidency';
 import { SpvConfirm } from './screens/business/SpvConfirm';
 import { CompanyInfo } from './screens/business/CompanyInfo';
@@ -43,6 +44,7 @@ function AppRoutes() {
       <Route path="/verify/company-confirm" element={<CompanyConfirm />} />
       <Route path="/verify/create-passcode" element={<CreatePasscode />} />
       <Route path="/verify/confirm-passcode" element={<ConfirmPasscode />} />
+      <Route path="/section-complete" element={<SectionComplete />} />
       <Route path="/hub" element={<Hub />} />
       <Route path="/business/tax-residency" element={<TaxResidency />} />
       <Route path="/business/spv-confirm" element={<SpvConfirm />} />

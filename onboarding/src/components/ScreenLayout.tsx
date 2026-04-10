@@ -2,11 +2,12 @@ import styles from './ScreenLayout.module.css';
 
 interface ScreenLayoutProps {
   children: React.ReactNode;
+  leaving?: boolean;
 }
 
-export function ScreenLayout({ children }: ScreenLayoutProps) {
+export function ScreenLayout({ children, leaving }: ScreenLayoutProps) {
   return (
-    <div className={styles.layout}>
+    <div className={[styles.layout, leaving ? styles.leaving : ''].filter(Boolean).join(' ')}>
       {children}
     </div>
   );
