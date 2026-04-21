@@ -109,7 +109,7 @@ export function CountrySelect() {
         label="Continue"
         variant="secondary"
         fullWidth
-        disabled={selected.size === 0}
+        state={selected.size === 0 ? 'disabled' : 'default'}
         onClick={() => navigate('/business/annual-turnover')}
       />
     </Page>

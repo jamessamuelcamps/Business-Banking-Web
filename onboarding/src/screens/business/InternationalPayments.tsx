@@ -37,7 +37,7 @@ export function InternationalPayments() {
         label="Continue"
         variant="secondary"
         fullWidth
-        disabled={selected === null}
+        state={selected === null ? 'disabled' : 'default'}
         onClick={() => navigate('/business/country-select')}
       />
     </Page>

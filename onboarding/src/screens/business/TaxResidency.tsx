@@ -49,7 +49,7 @@ export function TaxResidency() {
         variant="secondary"
         fullWidth
         onClick={handleNext}
-        disabled={answer === null}
+        state={answer === null ? 'disabled' : 'default'}
       />
     </Page>
   );

@@ -55,7 +55,7 @@ export function AccountPurpose() {
         label="Next"
         variant="secondary"
         fullWidth
-        disabled={selected.size === 0}
+        state={selected.size === 0 ? 'disabled' : 'default'}
         onClick={() => navigate('/business/source-of-funds', {
           state: { internationalPayments: selected.has('international-payments') },
         })}
