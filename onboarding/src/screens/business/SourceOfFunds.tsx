@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Page } from '../../components/Page';
 import { BooleanField } from '../../components/BooleanField';
 import { Button } from '../../components/Button';
@@ -18,8 +18,6 @@ const OPTIONS = [
 
 export function SourceOfFunds() {
   const navigate = useNavigate();
-  const location = useLocation();
-  const internationalPayments = location.state?.internationalPayments as boolean ?? false;
   const [selected, setSelected] = useState<Set<string>>(new Set());
 
   const toggle = (id: string) =>
@@ -29,12 +27,7 @@ export function SourceOfFunds() {
       return next;
     });
 
-  const handleNext = () => {
-    const next = internationalPayments
-      ? '/business/international-payments'
-      : '/business/annual-turnover';
-    navigate(next);
-  };
+  const handleNext = () => navigate('/business/annual-turnover');
 
   return (
     <Page>

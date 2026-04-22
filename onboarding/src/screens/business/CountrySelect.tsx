@@ -110,7 +110,7 @@ export function CountrySelect() {
         variant="secondary"
         fullWidth
         state={selected.size === 0 ? 'disabled' : 'default'}
-        onClick={() => navigate('/business/annual-turnover')}
+        onClick={() => navigate('/business/source-of-funds')}
       />
     </Page>
   );

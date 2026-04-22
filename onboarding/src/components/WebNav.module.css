@@ -6,6 +6,7 @@
   border-right: 1px solid var(--color-border-default);
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
 }
 
 .header {
@@ -13,6 +14,7 @@
   align-items: center;
   gap: var(--space-12);
   padding: var(--space-16);
+  flex-shrink: 0;
 }
 
 .logo {
@@ -49,6 +51,7 @@
 .divider {
   height: 1px;
   background: var(--color-border-default);
+  flex-shrink: 0;
 }
 
 .navItems {
@@ -58,57 +61,63 @@
   gap: var(--space-2);
 }
 
-.navItem {
+/* Shared row base */
+.navItemLocked,
+.navGroupHeader {
   display: flex;
   align-items: center;
   gap: var(--space-12);
   padding: var(--space-10) var(--space-12);
   border-radius: var(--radius-sm);
-  cursor: pointer;
-}
-
-.navItemActive {
-  background: var(--color-background-subtle);
 }
 
 .navItemLocked {
   cursor: default;
-  pointer-events: none;
 }
 
-.navItemLocked .navIcon {
-  color: var(--color-text-muted);
-}
-
-.navItemLocked .navLabel {
-  color: var(--color-text-muted);
+.navGroupHeader {
+  cursor: default;
 }
 
 .navIcon {
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  color: var(--color-icon-default);
+  color: var(--color-text-muted);
 }
 
 .navLabel {
   flex: 1;
   font-family: var(--font-family);
   font-size: var(--font-size-body);
-  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-muted);
 }
 
-.badge {
+.groupChevron {
   flex-shrink: 0;
-  width: 24px;
-  height: 24px;
-  border-radius: var(--radius-full);
-  background: var(--color-surface-brand);
+  color: var(--color-text-muted);
   display: flex;
   align-items: center;
-  justify-content: center;
+}
+
+.children {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding-left: calc(var(--space-12) + 24px);
+  padding-bottom: var(--space-4);
+}
+
+.childItem {
+  padding: var(--space-4) var(--space-12);
+  border-radius: var(--radius-sm);
+  cursor: default;
+}
+
+.childLabel {
   font-family: var(--font-family);
   font-size: var(--font-size-body-sm);
   font-weight: var(--font-weight-semibold);
-  color: var(--color-text-primary);
+  color: var(--color-text-muted);
 }

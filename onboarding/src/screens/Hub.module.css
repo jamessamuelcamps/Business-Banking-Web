@@ -3,6 +3,57 @@
   flex: 1;
   display: flex;
   min-height: 0;
+  position: relative;
+}
+
+/* Nav drawer — sits beside content on wide screens, slides in on narrow */
+.navDrawer {
+  display: contents;
+}
+
+.navOverlay {
+  display: none;
+}
+
+.menuButton {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--color-icon-default);
+  margin-right: auto;
+}
+
+@media (max-width: 700px) {
+  .navDrawer {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 20;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease-in-out;
+  }
+
+  .navDrawerOpen {
+    transform: translateX(0);
+  }
+
+  .navOverlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 19;
+  }
+
+  .menuButton {
+    display: flex;
+  }
 }
 
 .mainContent {
@@ -127,16 +178,16 @@
   flex: 1;
   height: 8px;
   border-radius: var(--radius-full);
-}
-
-.segmentFilled {
-  background-color: var(--color-surface-brand);
-  border: none;
-}
-
-.segmentEmpty {
   background-color: transparent;
   border: 1.5px solid rgba(255, 255, 255, 0.35);
+  overflow: hidden;
+}
+
+.segmentFill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface-brand);
+  transition: width 0.3s ease-in-out;
 }
 
 /* Header subtitle */

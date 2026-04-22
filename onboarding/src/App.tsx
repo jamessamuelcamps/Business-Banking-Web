@@ -27,6 +27,10 @@ import { FinancialInstitution } from './screens/business/FinancialInstitution';
 import { AnnualTurnover } from './screens/business/AnnualTurnover';
 import { ExpectedInflow } from './screens/business/ExpectedInflow';
 import { InitialDeposit } from './screens/business/InitialDeposit';
+import { WhichDirector } from './screens/personal/WhichDirector';
+import { HomeAddress } from './screens/personal/HomeAddress';
+import { SupportNeeds } from './screens/personal/SupportNeeds';
+import { ConfirmDetails } from './screens/personal/ConfirmDetails';
 
 function EmailOtp() {
   const { verify } = useJourney();
@@ -69,6 +73,10 @@ function AppRoutes() {
       <Route path="/business/annual-turnover" element={<AnnualTurnover />} />
       <Route path="/business/expected-inflow" element={<ExpectedInflow />} />
       <Route path="/business/initial-deposit" element={<InitialDeposit />} />
+      <Route path="/personal/which-director" element={<WhichDirector />} />
+      <Route path="/personal/home-address" element={<HomeAddress />} />
+      <Route path="/personal/support-needs" element={<SupportNeeds />} />
+      <Route path="/personal/confirm-details" element={<ConfirmDetails />} />
     </Routes>
   );
 }

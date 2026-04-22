@@ -1,34 +1,54 @@
-import { ChevronDown, LayoutGrid, Wallet, ArrowLeftRight, UserRound, FileText, CircleDollarSign, CreditCard, Link2, Lock } from 'lucide-react';
+import { ChevronDown, LayoutGrid, Leaf, CreditCard, ArrowLeftRight, Layers, FileText } from 'lucide-react';
 import logo from '../assets/logo.svg';
 import styles from './WebNav.module.css';
 
-interface NavItem {
-  key: string;
-  label: string;
-  icon: React.ReactNode;
-  badge?: number;
-}
+type NavEntry =
+  | { type: 'item'; key: string; label: string; icon: React.ReactNode }
+  | { type: 'group'; key: string; label: string; icon: React.ReactNode; children: { key: string; label: string }[] };
 
 interface WebNavProps {
   companyName: string;
-  activeKey?: string;
-  locked?: boolean;
 }
 
-const NAV_ITEMS: NavItem[] = [
-  { key: 'dashboard',   label: 'Dashboard',               icon: <LayoutGrid      size={24} strokeWidth={1.5} /> },
-  { key: 'accounts',    label: 'My accounts',              icon: <Wallet          size={24} strokeWidth={1.5} /> },
-  { key: 'payments',    label: 'Payments',                 icon: <ArrowLeftRight  size={24} strokeWidth={1.5} />, badge: 5 },
-  { key: 'recipients',  label: 'Recipients',               icon: <UserRound       size={24} strokeWidth={1.5} /> },
-  { key: 'invoicing',   label: 'Invoicing',                icon: <FileText        size={24} strokeWidth={1.5} /> },
-  { key: 'bill-pay',    label: 'Bill pay',                 icon: <CircleDollarSign size={24} strokeWidth={1.5} /> },
-  { key: 'cards',       label: 'Cards',                    icon: <CreditCard      size={24} strokeWidth={1.5} /> },
-  { key: 'accounting',  label: 'Accounting integrations',  icon: <Link2           size={24} strokeWidth={1.5} /> },
+const NAV_ENTRIES: NavEntry[] = [
+  { type: 'item',  key: 'dashboard', label: 'Dashboard',  icon: <LayoutGrid     size={24} strokeWidth={1.5} /> },
+  { type: 'item',  key: 'explore',   label: 'Explore',    icon: <Leaf           size={24} strokeWidth={1.5} /> },
+  { type: 'item',  key: 'cards',     label: 'Your cards', icon: <CreditCard     size={24} strokeWidth={1.5} /> },
+  {
+    type: 'group', key: 'payments', label: 'Payments', icon: <ArrowLeftRight size={24} strokeWidth={1.5} />,
+    children: [
+      { key: 'send-money',         label: 'Send money' },
+      { key: 'receive-money',      label: 'Receive money' },
+      { key: 'scheduled-payments', label: 'Scheduled payments' },
+      { key: 'recipients',         label: 'Recipients' },
+      { key: 'pay-a-bill',         label: 'Pay a bill' },
+    ],
+  },
+  {
+    type: 'group', key: 'manage', label: 'Manage', icon: <Layers size={24} strokeWidth={1.5} />,
+    children: [
+      { key: 'company-information',     label: 'Company information' },
+      { key: 'accounts',                label: 'Accounts' },
+      { key: 'team',                    label: 'Team' },
+      { key: 'expense-cards',           label: 'Expense cards' },
+      { key: 'accounting-integrations', label: 'Accounting integrations' },
+      { key: 'permissions-roles',       label: 'Permissions & roles' },
+      { key: 'subscriptions',           label: 'Subscriptions' },
+    ],
+  },
+  {
+    type: 'group', key: 'invoicing', label: 'Invoicing', icon: <FileText size={24} strokeWidth={1.5} />,
+    children: [
+      { key: 'create-invoice', label: 'Create invoice' },
+      { key: 'sent-invoices',  label: 'Sent invoices' },
+      { key: 'drafts',         label: 'Drafts' },
+      { key: 'templates',      label: 'Templates' },
+      { key: 'rules',          label: 'Rules' },
+    ],
+  },
 ];
 
-const LOCK_ICON = <Lock size={24} strokeWidth={1.5} />;
-
-export function WebNav({ companyName, activeKey = 'dashboard', locked = false }: WebNavProps) {
+export function WebNav({ companyName }: WebNavProps) {
   return (
     <nav className={styles.nav}>
       <div className={styles.header}>
@@ -42,23 +62,37 @@ export function WebNav({ companyName, activeKey = 'dashboard', locked = false }:
       <div className={styles.divider} />
 
       <div className={styles.navItems}>
-        {NAV_ITEMS.map(item => (
-          <div
-            key={item.key}
-            className={[
-              styles.navItem,
-              !locked && item.key === activeKey && styles.navItemActive,
-              locked && styles.navItemLocked,
-            ].filter(Boolean).join(' ')}
-          >
-            <span className={styles.navIcon}>{locked ? LOCK_ICON : item.icon}</span>
-            <span className={styles.navLabel}>{item.label}</span>
-            {!locked && item.badge != null && (
-              <span className={styles.badge}>{item.badge}</span>
-            )}
-          </div>
-        ))}
+        {NAV_ENTRIES.map(entry => {
+          if (entry.type === 'item') {
+            return (
+              <div key={entry.key} className={styles.navItemLocked}>
+                <span className={styles.navIcon}>{entry.icon}</span>
+                <span className={styles.navLabel}>{entry.label}</span>
+              </div>
+            );
+          }
+
+          return (
+            <div key={entry.key}>
+              <div className={styles.navGroupHeader}>
+                <span className={styles.navIcon}>{entry.icon}</span>
+                <span className={styles.navLabel}>{entry.label}</span>
+                <span className={styles.groupChevron}>
+                  <ChevronDown size={16} strokeWidth={1.5} />
+                </span>
+              </div>
+              <div className={styles.children}>
+                {entry.children.map(child => (
+                  <div key={child.key} className={styles.childItem}>
+                    <span className={styles.childLabel}>{child.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        })}
       </div>
+
     </nav>
   );
 }

@@ -17,14 +17,22 @@ interface VerifyData {
   passcode: string;
 }
 
+interface PersonalData {
+  directorName: string;
+  homeAddress: string;
+  previousAddress: string;
+}
+
 interface JourneyState {
   verify: Partial<VerifyData>;
+  personal: Partial<PersonalData>;
   sections: Record<SectionKey, SectionStatus>;
   isSpv: boolean | null;
 }
 
 interface JourneyContextValue extends JourneyState {
   setVerifyData: (data: Partial<VerifyData>) => void;
+  setPersonalData: (data: Partial<PersonalData>) => void;
   setSectionStatus: (key: SectionKey, status: SectionStatus) => void;
   setIsSpv: (value: boolean) => void;
 }
@@ -34,6 +42,7 @@ const JourneyContext = createContext<JourneyContextValue | null>(null);
 export function JourneyProvider({ children }: { children: React.ReactNode }) {
   const [state, setState] = useState<JourneyState>({
     verify: {},
+    personal: {},
     sections: {
       business: 'not_started',
       personal: 'not_started',
@@ -46,6 +55,10 @@ export function JourneyProvider({ children }: { children: React.ReactNode }) {
 
   const setVerifyData = (data: Partial<VerifyData>) => {
     setState(s => ({ ...s, verify: { ...s.verify, ...data } }));
+  };
+
+  const setPersonalData = (data: Partial<PersonalData>) => {
+    setState(s => ({ ...s, personal: { ...s.personal, ...data } }));
   };
 
   const setSectionStatus = (key: SectionKey, status: SectionStatus) => {
@@ -64,7 +77,7 @@ export function JourneyProvider({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <JourneyContext.Provider value={{ ...state, setVerifyData, setSectionStatus, setIsSpv }}>
+    <JourneyContext.Provider value={{ ...state, setVerifyData, setPersonalData, setSectionStatus, setIsSpv }}>
       {children}
     </JourneyContext.Provider>
   );

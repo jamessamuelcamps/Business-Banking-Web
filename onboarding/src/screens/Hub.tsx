@@ -1,5 +1,6 @@
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ChevronRight, Lock } from 'lucide-react';
+import { ChevronRight, Lock, Menu, X } from 'lucide-react';
 import { ScreenLayout } from '../components/ScreenLayout';
 import { WebNav } from '../components/WebNav';
 import { useJourney, type SectionStatus } from '../context/JourneyContext';
@@ -8,7 +9,7 @@ import styles from './Hub.module.css';
 const MAIN_SECTIONS = [
   { key: 'verify' as const, title: 'Verify your details', path: '#' },
   { key: 'business' as const, title: 'Business information', path: '/business/account-purpose' },
-  { key: 'personal' as const, title: 'Personal information', path: '#' },
+  { key: 'personal' as const, title: 'Personal information', path: '/personal/which-director' },
   { key: 'id_verification' as const, title: 'ID verification', path: '#' },
 ];
 
@@ -38,16 +39,56 @@ export function Hub() {
     shareholders: sections.shareholders,
   };
 
+  const [navOpen, setNavOpen] = useState(false);
+
   const completedCount = Object.values(sectionStatuses).filter(s => s === 'complete').length;
   const progressPercent = Math.round((completedCount / TOTAL_SECTIONS) * 100);
+
+  // Animate the displayed number ticking up to progressPercent
+  const [displayPercent, setDisplayPercent] = useState(progressPercent);
+  const prevPercent = useRef(progressPercent);
+
+  useEffect(() => {
+    const start = prevPercent.current;
+    const end = progressPercent;
+    if (start === end) return;
+    const duration = 300;
+    const startTime = performance.now();
+    const tick = (now: number) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      // ease-in-out
+      const eased = progress < 0.5 ? 2 * progress * progress : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+      setDisplayPercent(Math.round(start + (end - start) * eased));
+      if (progress < 1) requestAnimationFrame(tick);
+      else prevPercent.current = end;
+    };
+    requestAnimationFrame(tick);
+  }, [progressPercent]);
+
+  // Trigger bar fill on next paint so CSS transition runs
+  const [filledCount, setFilledCount] = useState(0);
+  useEffect(() => {
+    const id = requestAnimationFrame(() => setFilledCount(completedCount));
+    return () => cancelAnimationFrame(id);
+  }, [completedCount]);
 
   return (
     <ScreenLayout>
       <div className={styles.appLayout}>
-        <WebNav companyName={verify.companyName ?? 'Your company'} locked />
+        {/* Mobile nav overlay */}
+        {navOpen && (
+          <div className={styles.navOverlay} onClick={() => setNavOpen(false)} />
+        )}
+        <div className={[styles.navDrawer, navOpen && styles.navDrawerOpen].filter(Boolean).join(' ')}>
+          <WebNav companyName={verify.companyName ?? 'Your company'} />
+        </div>
 
         <main className={styles.mainContent}>
           <div className={styles.topBar}>
+            <button type="button" className={styles.menuButton} onClick={() => setNavOpen(o => !o)}>
+              {navOpen ? <X size={24} strokeWidth={1.5} /> : <Menu size={24} strokeWidth={1.5} />}
+            </button>
             <button type="button" className={styles.helpButton}>Help</button>
           </div>
           <div className={styles.scrollInner}>
@@ -61,7 +102,7 @@ export function Hub() {
 
               <div className={styles.cardMiddle}>
                 <div className={styles.percentageWrapper}>
-                  <span className={styles.percentageLarge}>{progressPercent}</span>
+                  <span className={styles.percentageLarge}>{displayPercent}</span>
                   <span className={styles.percentageSymbol}>%</span>
                 </div>
 
@@ -69,11 +110,14 @@ export function Hub() {
                   {Array.from({ length: TOTAL_SECTIONS }).map((_, i) => (
                     <div
                       key={i}
-                      className={[
-                        styles.segment,
-                        i < completedCount ? styles.segmentFilled : styles.segmentEmpty,
-                      ].join(' ')}
-                    />
+                      className={styles.segment}
+                      style={{ borderColor: i < filledCount ? 'var(--color-surface-brand)' : undefined }}
+                    >
+                      <div
+                        className={styles.segmentFill}
+                        style={{ width: i < filledCount ? '100%' : '0%' }}
+                      />
+                    </div>
                   ))}
                 </div>
               </div>

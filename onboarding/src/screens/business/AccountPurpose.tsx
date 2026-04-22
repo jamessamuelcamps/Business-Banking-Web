@@ -56,9 +56,12 @@ export function AccountPurpose() {
         variant="secondary"
         fullWidth
         state={selected.size === 0 ? 'disabled' : 'default'}
-        onClick={() => navigate('/business/source-of-funds', {
-          state: { internationalPayments: selected.has('international-payments') },
-        })}
+        onClick={() => {
+          const next = selected.has('international-payments')
+            ? '/business/international-payments'
+            : '/business/source-of-funds';
+          navigate(next);
+        }}
       />
     </Page>
   );
